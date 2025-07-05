@@ -9,7 +9,7 @@ body {
   line-height: 1.6;
 }
 
-/* HERO BANNER (Clean) */
+/* HERO BANNER */
 .hero {
   background: url('banner.png') center center/cover no-repeat;
   height: 300px;
@@ -19,48 +19,59 @@ body {
 }
 
 /* NAVIGATION */
-nav {
+.navbar {
   background-color: #343a40;
-  padding: 0.5rem;
-  text-align: center;
+  padding: 0.7rem 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin-top: 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-nav ul {
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-links {
   list-style: none;
+  display: flex;
+  gap: 25px;
   padding: 0;
-  margin: 0;
+  margin: 10px 0 0 0;
+  justify-content: center;
 }
 
-nav ul li {
-  display: inline-block;
-  margin: 0 15px;
-}
-
-nav ul li a {
+.nav-links li a {
   color: white;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.25rem;
   transition: color 0.3s;
 }
 
-nav ul li a:hover {
+.nav-links li a:hover {
   color: #ffc107;
 }
 
-/* SECTION STYLING */
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+/* SECTIONS */
 section {
   padding: 3rem 1rem;
+  padding-top: 4rem;
   max-width: 960px;
-  margin: auto;
+  margin: 2rem auto;
   background: #ffffff;
   border-radius: 12px;
-  margin-bottom: 2rem;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
@@ -72,8 +83,8 @@ h2 {
 }
 
 h3 {
-  margin-top: 1rem;
-  color: #444;
+  margin-top: 1.5rem;
+  color: #333;
 }
 
 /* SKILLS */
@@ -85,16 +96,25 @@ h3 {
 
 /* PROJECTS */
 .project {
-  background-color: #fdfdfd;
+  background-color: #f9f9f9;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
   transition: transform 0.2s ease;
+}
+
+.project h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
 }
 
 .project:hover {
   transform: translateY(-4px);
+}
+
+.project p {
+  margin: 0.5rem 0;
 }
 
 .project a {
@@ -120,7 +140,7 @@ h3 {
   margin-top: 1rem;
 }
 
-/* CONTACT ICONS */
+/* CONTACT ICON BUTTONS */
 .contact-buttons {
   text-align: center;
   margin-top: 1rem;
@@ -167,14 +187,6 @@ h3 {
   background: #1e7e34;
 }
 
-.icon-btn.email {
-  background: #6f42c1;
-}
-
-.icon-btn.email:hover {
-  background: #5a32a3;
-}
-
 /* FOOTER */
 footer {
   background-color: #343a40;
@@ -184,50 +196,8 @@ footer {
   font-size: 0.9rem;
   margin-top: 2rem;
 }
-/* ---------- MOBILE RESPONSIVE ---------- */
-@media (max-width: 768px) {
-  nav ul li {
-    display: block;
-    margin: 10px 0;
-  }
 
-  section {
-    padding: 2rem 1rem;
-    margin: 1rem;
-  }
-
-  .hero {
-    height: 180px;
-    background-size: cover;
-  }
-
-  .project {
-    padding: 1rem;
-  }
-
-  .contact-buttons .icon-btn {
-    font-size: 1.2rem;
-    padding: 10px;
-    margin: 5px;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  nav ul {
-    padding: 0;
-  }
-
-  nav {
-    padding: 0.5rem;
-  }
-
-  .icon-btn {
-    font-size: 1.4rem;
-  }
-}
-/* Toggle Button Style */
+/* DARK MODE TOGGLE (Bottom Right) */
 #darkModeToggle {
   position: fixed;
   bottom: 20px;
@@ -239,7 +209,7 @@ footer {
   font-size: 1.5rem;
   padding: 10px 14px;
   cursor: pointer;
-  z-index: 999;
+  z-index: 9999;
   transition: background 0.3s;
 }
 
@@ -282,10 +252,61 @@ body.dark .icon-btn {
 body.dark .icon-btn:hover {
   background-color: #666;
 }
-@media (max-width: 480px) {
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
   .hero {
-    height: 140px;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 160px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #343a40;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1000;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  section {
+    padding: 2rem 1rem;
+    margin: 1rem;
+  }
+
+  .project {
+    padding: 1rem;
+  }
+
+  .contact-buttons .icon-btn {
+    font-size: 1.2rem;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .icon-btn {
+    font-size: 1.4rem;
   }
 }
