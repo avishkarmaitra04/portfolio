@@ -278,6 +278,14 @@ body.dark .icon-btn {
   background-color: #444;
   color: #fff;
 }
+@media (max-width: 480px) {
+  .hero {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
 
 body.dark .icon-btn:hover {
   background-color: #666;
