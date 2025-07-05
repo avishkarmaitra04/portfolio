@@ -267,25 +267,28 @@ body.dark .icon-btn:hover {
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #343a40;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 1000;
-    text-align: center;
-    padding-bottom: 10px;
-  }
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #343a40;
+  flex-direction: column;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
 
-  .nav-links.active {
-    display: flex;
-  }
+.nav-links.active {
+  left: 0;
+}
 
-  .nav-links li {
-    margin: 10px 0;
-  }
+.nav-links li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+  text-align: left;
+}
+
 
   section {
     padding: 2rem 1rem;
